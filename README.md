@@ -1,4 +1,4 @@
-# SimpleNet
+# SimpleNet Testing.
 
 
 ![](imgs/cover.png)
@@ -160,6 +160,12 @@ bash run.sh
   year={2023}
 }
 ```
+
+## Code Reference
+
+- https://arxiv.org/pdf/2011.08785v1
+
+- https://github.com/xiahaifeng1995/PaDiM-Anomaly-Detection-Localization-master
 
 ## Acknowledgement
 
