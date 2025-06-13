@@ -40,6 +40,105 @@ Download the dataset from [here](https://www.mvtec.com/company/research/datasets
 
 The dataset folders/files follow its original structure.
 
+```
+├── data4
+│   └── MVTec_ad
+│       ├── bottle
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── cable
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── capsule
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── carpet
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── grid
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── hazelnut
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── leather
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── license.txt
+│       ├── metal_nut
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── pill
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── readme.txt
+│       ├── screw
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── tile
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── toothbrush
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── transistor
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       ├── wood
+│       │   ├── ground_truth
+│       │   ├── license.txt
+│       │   ├── readme.txt
+│       │   ├── test
+│       │   └── train
+│       └── zipper
+│           ├── ground_truth
+│           ├── license.txt
+│           ├── readme.txt
+│           ├── test
+│           └── train
+
+
+```
+
 ### Run
 
 #### Demo train
