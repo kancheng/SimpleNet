@@ -99,6 +99,12 @@ def run(
                 # i_auroc, p_auroc, pro_auroc =  SimpleNet.test(dataloaders["training"], dataloaders["testing"], save_segmentation_images)
                 print("Warning: Pls set test with true by default")
 
+                i_auroc, p_auroc, pro_auroc = SimpleNet.test(
+                    dataloaders["training"],
+                    dataloaders["testing"],
+                    save_segmentation_images=save_segmentation_images
+                )
+
             result_collect.append(
                 {
                     "dataset_name": dataset_name,
@@ -192,7 +198,7 @@ def net(
             backbone = backbones.load(backbone_name)
             backbone.name, backbone.seed = backbone_name, backbone_seed
 
-            simplenet_inst = simplenet.SimpleNet(device)
+            simplenet_inst = simplenet2.SimpleNet(device)
             simplenet_inst.load(
                 backbone=backbone,
                 layers_to_extract_from=layers_to_extract_from,

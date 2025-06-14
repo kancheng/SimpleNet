@@ -20,6 +20,9 @@ from torch.utils.tensorboard import SummaryWriter
 
 import common
 import metrics
+
+from metrics import compute_imagewise_retrieval_metrics
+
 from utils import plot_segmentation_images
 
 LOGGER = logging.getLogger(__name__)
@@ -284,67 +287,128 @@ class SimpleNet(torch.nn.Module):
 
 
         return features, patch_shapes
+    ######
+    # RAW
+    ######
+    # def test(self, training_data, test_data, save_segmentation_images):
 
-    
-    def test(self, training_data, test_data, save_segmentation_images):
+    #     ckpt_path = os.path.join(self.ckpt_dir, "models.ckpt")
+    #     if os.path.exists(ckpt_path):
+    #         state_dicts = torch.load(ckpt_path, map_location=self.device)
+    #         if "pretrained_enc" in state_dicts:
+    #             self.feature_enc.load_state_dict(state_dicts["pretrained_enc"])
+    #         if "pretrained_dec" in state_dicts:
+    #             self.feature_dec.load_state_dict(state_dicts["pretrained_dec"])
 
-        ckpt_path = os.path.join(self.ckpt_dir, "models.ckpt")
-        if os.path.exists(ckpt_path):
-            state_dicts = torch.load(ckpt_path, map_location=self.device)
-            if "pretrained_enc" in state_dicts:
-                self.feature_enc.load_state_dict(state_dicts["pretrained_enc"])
-            if "pretrained_dec" in state_dicts:
-                self.feature_dec.load_state_dict(state_dicts["pretrained_dec"])
+    #     aggregator = {"scores": [], "segmentations": [], "features": []}
+    #     scores, segmentations, features, labels_gt, masks_gt = self.predict(test_data)
+    #     aggregator["scores"].append(scores)
+    #     aggregator["segmentations"].append(segmentations)
+    #     aggregator["features"].append(features)
 
+    #     scores = np.array(aggregator["scores"])
+    #     min_scores = scores.min(axis=-1).reshape(-1, 1)
+    #     max_scores = scores.max(axis=-1).reshape(-1, 1)
+    #     scores = (scores - min_scores) / (max_scores - min_scores)
+    #     scores = np.mean(scores, axis=0)
+
+    #     segmentations = np.array(aggregator["segmentations"])
+    #     min_scores = (
+    #         segmentations.reshape(len(segmentations), -1)
+    #         .min(axis=-1)
+    #         .reshape(-1, 1, 1, 1)
+    #     )
+    #     max_scores = (
+    #         segmentations.reshape(len(segmentations), -1)
+    #         .max(axis=-1)
+    #         .reshape(-1, 1, 1, 1)
+    #     )
+    #     segmentations = (segmentations - min_scores) / (max_scores - min_scores)
+    #     segmentations = np.mean(segmentations, axis=0)
+
+    #     anomaly_labels = [
+    #         x[1] != "good" for x in test_data.dataset.data_to_iterate
+    #     ]
+
+    #     if save_segmentation_images:
+    #         self.save_segmentation_images(test_data, segmentations, scores)
+
+    #     # === NEW: Save segmentations + masks_gt ===
+    #     np.save(os.path.join(self.ckpt_dir, f"segmentations_{self.dataset_name}.npy"), np.array(segmentations))
+    #     np.save(os.path.join(self.ckpt_dir, f"masks_gt_{self.dataset_name}.npy"), np.array(masks_gt))
+    #     # =========================================
+    #     auroc = metrics.compute_imagewise_retrieval_metrics(
+    #         scores, anomaly_labels
+    #     )["auroc"]
+
+    #     # Compute PRO score & PW Auroc for all images
+    #     pixel_scores = metrics.compute_pixelwise_retrieval_metrics(
+    #         segmentations, masks_gt
+    #     )
+    #     full_pixel_auroc = pixel_scores["auroc"]
+
+    #     return auroc, full_pixel_auroc
+
+
+    def test(self, train_data, test_data, save_segmentation_images=True):
+        """
+        Evaluate model on test_data.
+        Args:
+            train_data: Not used in this function.
+            test_data: DataLoader for test samples.
+            save_segmentation_images: If True, save segmentation result visualizations.
+        Returns:
+            i_auroc: AUROC score for image-level classification.
+            p_auroc: AUROC score for pixel-wise classification (full image).
+            pro_auroc: AUROC score for anomaly pixel localization (PRO score).
+        """
         aggregator = {"scores": [], "segmentations": [], "features": []}
+
+        # Get predictions
         scores, segmentations, features, labels_gt, masks_gt = self.predict(test_data)
+
+        # Aggregate
         aggregator["scores"].append(scores)
         aggregator["segmentations"].append(segmentations)
         aggregator["features"].append(features)
 
+        # Normalize scores
         scores = np.array(aggregator["scores"])
         min_scores = scores.min(axis=-1).reshape(-1, 1)
         max_scores = scores.max(axis=-1).reshape(-1, 1)
-        scores = (scores - min_scores) / (max_scores - min_scores)
+        scores = (scores - min_scores) / (max_scores - min_scores + 1e-8)
         scores = np.mean(scores, axis=0)
 
+        # Normalize segmentations
         segmentations = np.array(aggregator["segmentations"])
-        min_scores = (
-            segmentations.reshape(len(segmentations), -1)
-            .min(axis=-1)
-            .reshape(-1, 1, 1, 1)
-        )
-        max_scores = (
-            segmentations.reshape(len(segmentations), -1)
-            .max(axis=-1)
-            .reshape(-1, 1, 1, 1)
-        )
-        segmentations = (segmentations - min_scores) / (max_scores - min_scores)
+        seg_min = segmentations.reshape(len(segmentations), -1).min(axis=-1).reshape(-1, 1, 1, 1)
+        seg_max = segmentations.reshape(len(segmentations), -1).max(axis=-1).reshape(-1, 1, 1, 1)
+        segmentations = (segmentations - seg_min) / (seg_max - seg_min + 1e-8)
         segmentations = np.mean(segmentations, axis=0)
 
-        anomaly_labels = [
-            x[1] != "good" for x in test_data.dataset.data_to_iterate
-        ]
+        # Determine binary anomaly label for image-level AUROC
+        anomaly_labels = [x[1] != "good" for x in test_data.dataset.data_to_iterate]
 
+        # Save segmentation visualizations if needed
         if save_segmentation_images:
             self.save_segmentation_images(test_data, segmentations, scores)
 
-        # === NEW: Save segmentations + masks_gt ===
+        # Save raw npy segmentation + GT
+        os.makedirs(self.ckpt_dir, exist_ok=True)
         np.save(os.path.join(self.ckpt_dir, f"segmentations_{self.dataset_name}.npy"), np.array(segmentations))
         np.save(os.path.join(self.ckpt_dir, f"masks_gt_{self.dataset_name}.npy"), np.array(masks_gt))
-        # =========================================
-        auroc = metrics.compute_imagewise_retrieval_metrics(
-            scores, anomaly_labels
-        )["auroc"]
 
-        # Compute PRO score & PW Auroc for all images
-        pixel_scores = metrics.compute_pixelwise_retrieval_metrics(
-            segmentations, masks_gt
-        )
-        full_pixel_auroc = pixel_scores["auroc"]
+        # Image-level AUROC
+        i_auroc = compute_imagewise_retrieval_metrics(scores, anomaly_labels)["auroc"]
 
-        return auroc, full_pixel_auroc
-    
+        # Pixel-wise AUROC
+        p_auroc = compute_imagewise_retrieval_metrics(segmentations, masks_gt)["auroc"]
+
+        # PRO Score AUROC (localization)
+        pro_auroc = compute_imagewise_retrieval_metrics(segmentations, masks_gt)["pro"]
+
+        return i_auroc, p_auroc, pro_auroc
+
     def _evaluate(self, test_data, scores, segmentations, features, labels_gt, masks_gt):
         
         scores = np.squeeze(np.array(scores))
