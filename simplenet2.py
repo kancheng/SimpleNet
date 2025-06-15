@@ -21,7 +21,7 @@ from torch.utils.tensorboard import SummaryWriter
 import common
 import metrics
 
-from metrics import compute_imagewise_retrieval_metrics
+from metrics import compute_imagewise_retrieval_metrics, compute_pixelwise_retrieval_metrics, compute_pro
 
 from utils import plot_segmentation_images
 
@@ -402,10 +402,10 @@ class SimpleNet(torch.nn.Module):
         i_auroc = compute_imagewise_retrieval_metrics(scores, anomaly_labels)["auroc"]
 
         # Pixel-wise AUROC
-        p_auroc = compute_imagewise_retrieval_metrics(segmentations, masks_gt)["auroc"]
+        p_auroc = compute_pixelwise_retrieval_metrics(segmentations, masks_gt)["auroc"]
 
         # PRO Score AUROC (localization)
-        pro_auroc = compute_imagewise_retrieval_metrics(segmentations, masks_gt)["pro"]
+        pro_auroc = compute_pro(np.squeeze(np.array(masks_gt)), segmentations)
 
         return i_auroc, p_auroc, pro_auroc
 
