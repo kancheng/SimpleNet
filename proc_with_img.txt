@@ -1,0 +1,217 @@
+INFO:__main__:Command line arguments: main2.py --gpu 0 --seed 0 --log_group simplenet_mvtec --log_project MVTecAD_Results_Img --results_path results --run_name run --test --save_segmentation_images net -b wideresnet50 -le layer2 -le layer3 --pretrain_embed_dimension 1536 --target_embed_dimension 1536 --patchsize 3 --meta_epochs 40 --embedding_size 256 --gan_epochs 4 --noise_std 0.015 --dsc_hidden 1024 --dsc_layers 2 --dsc_margin .5 --pre_proj 1 dataset --batch_size 4 --resize 329 --imagesize 288 -d screw -d pill -d capsule -d carpet -d grid -d tile -d wood -d zipper -d cable -d toothbrush -d transistor -d metal_nut -d bottle -d hazelnut -d leather mvtec /home/kan/proj/SimpleNet/data4/MVTec_ad
+INFO:__main__:Dataset: train=320 test=160
+INFO:__main__:Dataset: train=267 test=167
+INFO:__main__:Dataset: train=219 test=132
+INFO:__main__:Dataset: train=280 test=117
+INFO:__main__:Dataset: train=264 test=78
+INFO:__main__:Dataset: train=230 test=117
+INFO:__main__:Dataset: train=247 test=79
+INFO:__main__:Dataset: train=240 test=151
+INFO:__main__:Dataset: train=224 test=150
+INFO:__main__:Dataset: train=60 test=42
+INFO:__main__:Dataset: train=213 test=100
+INFO:__main__:Dataset: train=220 test=115
+INFO:__main__:Dataset: train=209 test=83
+INFO:__main__:Dataset: train=391 test=110
+INFO:__main__:Dataset: train=245 test=124
+INFO:__main__:Evaluating dataset [mvtec_screw] (1/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.592                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.594
+INFO:__main__:anomaly_pixel_auroc: 0.401
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_pill] (2/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.416                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.611
+INFO:__main__:anomaly_pixel_auroc: 0.342
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_capsule] (3/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+                                                                                                                                                                                                             
+INFO:__main__:instance_auroc: 0.338
+INFO:__main__:full_pixel_auroc: 0.560
+INFO:__main__:anomaly_pixel_auroc: 0.272
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_carpet] (4/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.533                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.654
+INFO:__main__:anomaly_pixel_auroc: 0.359
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_grid] (5/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.596                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.439
+INFO:__main__:anomaly_pixel_auroc: 0.105
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_tile] (6/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.679                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.391
+INFO:__main__:anomaly_pixel_auroc: 0.423
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_wood] (7/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.834                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.637
+INFO:__main__:anomaly_pixel_auroc: 0.505
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_zipper] (8/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.836                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.515
+INFO:__main__:anomaly_pixel_auroc: 0.354
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_cable] (9/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.415                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.528
+INFO:__main__:anomaly_pixel_auroc: 0.233
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_toothbrush] (10/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.508                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.383
+INFO:__main__:anomaly_pixel_auroc: 0.360
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_transistor] (11/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.530                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.472
+INFO:__main__:anomaly_pixel_auroc: 0.247
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_metal_nut] (12/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.581                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.631
+INFO:__main__:anomaly_pixel_auroc: 0.239
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_bottle] (13/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.671                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.506
+INFO:__main__:anomaly_pixel_auroc: 0.142
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_hazelnut] (14/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.725                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.638
+INFO:__main__:anomaly_pixel_auroc: 0.376
+INFO:__main__:
+
+-----
+
+INFO:__main__:Evaluating dataset [mvtec_leather] (15/15)...
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/kan/anaconda3/envs/fed38/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=Wide_ResNet50_2_Weights.IMAGENET1K_V1`. You can also use `weights=Wide_ResNet50_2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO:__main__:Training models (1/1)
+INFO:__main__:instance_auroc: 0.369                                                                                                                                                                          
+INFO:__main__:full_pixel_auroc: 0.240
+INFO:__main__:anomaly_pixel_auroc: 0.042
+INFO:__main__:
+
+-----
+
+INFO:utils:instance_auroc: 0.575
+INFO:utils:full_pixel_auroc: 0.520
+INFO:utils:anomaly_pixel_auroc: 0.293
+✅ Prediction completed. Check the output directory for visualization results.
+
